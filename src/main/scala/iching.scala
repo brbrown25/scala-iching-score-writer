@@ -2,10 +2,17 @@ import scala.util.Random
 import org.json4s._
 import org.json4s.JsonDSL._
 import org.json4s.native.JsonMethods._
+import java.io._
 
 object Iching {
 	def main(args: Array[String]) {
 
+		/***
+		*		Define the json object structure
+		*		A Score consists of EditedTrack, EditedTrack consist of EditedSounds
+		*		The goal is to have a visible structure for how to build your score
+		*		Futhur improvements to come!
+		*/
 		case class EditedSounds(
 		  duration: String,
 		  sound: String,
@@ -29,7 +36,6 @@ object Iching {
 		val track6 = 0 to 11 map { a => EditedSounds(durations.get(dice.nextInt(12)).getOrElse(0).toString,sounds.get(dice.nextInt(12)).getOrElse(""),effects.get(dice.nextInt(12)).getOrElse("")) }
 		
 		// TODO make it this much more flexible
-		// Make this write out to a file
 		val score = Map(
 			"track1" -> track1.map { s =>
 				Map(
@@ -75,6 +81,15 @@ object Iching {
 			}
 		)
 
-		println(compact(render(score)))
+		// println(pretty(render(score)))
+		println("Writing to file!")
+
+		// FileWriter
+		val file = new File("score.json")
+		val bw = new BufferedWriter(new FileWriter(file))
+		bw.write(pretty(render(score)))
+		bw.close()
+
+		println("Finished Writing to file!")
 	}
 }

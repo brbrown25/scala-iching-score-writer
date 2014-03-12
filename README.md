@@ -8,6 +8,6 @@ Getting Started
 ---------------
 
 Run
-sbt scala-iching/run
+sbt scala-iching-score-writer/run
 
 TODO explain this all better
