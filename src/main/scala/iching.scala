@@ -16,7 +16,7 @@ object Iching {
   		track: Seq[EditedSounds] = Seq()
 		)
 
-		/*val sound1 = EditedSounds("0.45","dentist drill","reverse")
+		val sound1 = EditedSounds("0.45","dentist drill","reverse")
 		val sound2 = EditedSounds("1.2","frying egg","flanger")
 
 		val sample = EditedTrack(Seq(sound1,sound2))
@@ -31,7 +31,7 @@ object Iching {
 			}
 		)
 
-		println(compact(render(json)))*/
+		println(compact(render(json)))
 
 
 		val dice = new Random()
