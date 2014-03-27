@@ -2,7 +2,8 @@ import scala.util.Random
 import org.json4s._
 import org.json4s.JsonDSL._
 import org.json4s.native.JsonMethods._
-import java.io._
+import java.io.{File,FileWriter,BufferedWriter,IOException}
+import scala.io.Source
 
 object Iching {
 	def main(args: Array[String]) {
@@ -22,6 +23,11 @@ object Iching {
 		case class EditedTrack(
   		track: Seq[EditedSounds] = Seq()
 		)
+
+
+		/*for (line <- Source.fromFile("sample.txt").getLines()) {
+			println(line)
+		}*/
 
 		val dice = new Random()
 		val durations = Map(1 -> "0.45",2 -> "1",3 -> "0.10",4 -> "1.3",5 -> "0.5",6 -> "1.2",7 -> "0.20",8 -> "0",9 -> "0.55",10 -> "1.1",11 -> "1.10",12 -> "2")
@@ -82,7 +88,7 @@ object Iching {
 		)
 
 		// println(pretty(render(score)))
-		println("Writing to file!")
+		/*println("Writing to file!")
 
 		// FileWriter
 		val file = new File("score.json")
@@ -90,6 +96,6 @@ object Iching {
 		bw.write(pretty(render(score)))
 		bw.close()
 
-		println("Finished Writing to file!")
+		println("Finished Writing to file!")*/
 	}
 }
